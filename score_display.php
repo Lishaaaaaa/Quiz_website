@@ -4,11 +4,15 @@
     <title>Quiz Score</title>
     <style>
         body {
+            margin-top: 100px; /* Adjusted margin-top to accommodate the navbar */
+            text-align: center;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             padding: 20px;
+            
         }
         h1 {
+            margin-top: 190px;
             color: #007bff;
             margin-bottom: 20px;
         }
@@ -27,10 +31,18 @@
         .quiz-link:hover {
             background-color: #0056b3;
         }
+        .party-popper {
+            width: 200px;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+        .party-popper img {
+            width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
-    <h1>Quiz Score</h1>
     <?php
     session_start();
     include("./shared/config.php");
@@ -42,7 +54,9 @@
         header("Location: login.php?redirect=score_display.php");
         exit();
     }
-
+    ?>
+    <h1>Quiz Score</h1>
+    <?php
     // Get quiz ID from URL
     $quizID = isset($_GET['quizID']) ? $_GET['quizID'] : null;
 
@@ -66,6 +80,18 @@
 
     $conn->close();
     ?>
-    <a class="quiz-link" href="category.php">Go back to Categories</a>
+    <div class="party-popper" onclick="partyPopper()">
+        <img src="./images/party.gif" alt="Party Popper">
+    </div>
+    <script>
+        function partyPopper() {
+            var partyPopper = document.querySelector('.party-popper img');
+            partyPopper.style.animation = 'pop 1s ease forwards';
+            setTimeout(function() {
+                partyPopper.style.animation = 'none';
+            }, 1000);
+        }
+    </script>
+    <!-- <a class="quiz-link" href="category.php">Go back to Categories</a> -->
 </body>
 </html>

@@ -1,97 +1,110 @@
-<?php
-include "../shared/footer.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Navigation</title>
     <style>
         body {
-            /* background: #250821; */
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            color: black;
             overflow-x: hidden;
+            margin: 100px;
         }
-        
-        /* header {
+
+
+        li {
+            list-style: none;
+        }
+
+        header {
             width: 100%;
-            height: 100vh;
             background-size: cover;
             font-family: sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
-         */
+
         .navbar {
-            background-color: #12f7ff;
+            background-color: #050635;
             padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
-        
+
         .logo {
             color: black;
             font-size: 1.5em;
         }
-        
+
         .nav-links {
             list-style: none;
             display: flex;
             margin: 0;
             padding: 0;
+            font-size: 20px;
         }
-        
-        .nav-links li {
-            margin-right: 15px;
-        }
-        
+
         .nav-links a {
             text-decoration: none;
-            color: black;
+            color: rgb(220, 219, 219);
             font-weight: bold;
+            font-size: 1em;
+            /* Adjusted font size */
+            margin: 0 10px;
+            /* Reduced margin */
+            letter-spacing: 1px;
         }
-        
+
         .nav-links a:hover {
             color: purple;
         }
-        
+
         .burger-menu {
             display: none;
-            color: black;
+            color: white;
             font-size: 1.5em;
             cursor: pointer;
             padding: 0;
+            margin-right: 15px;
+          
         }
-        
+
         .link {
             background: none;
             border: none;
             text-decoration: none;
-            color: black;
+            color: rgb(229, 212, 212);
             font-weight: bold;
             font-size: inherit;
             font-family: inherit;
             cursor: pointer;
         }
-        
+
         .link:hover {
             color: purple;
         }
-        
+
+        .dropdown button:hover {
+            color: purple;
+        }
+
         .dropdown.active>.link,
         .link:hover {
-            color: black;
+            color: rgb(220, 216, 216);
         }
-        
+
         .dropdown {
             position: relative;
         }
-        
+
         .dropdown-menu {
             position: absolute;
             left: 0;
@@ -105,105 +118,158 @@ include "../shared/footer.php";
             transform: translateY(-10px);
             transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
         }
-        
+
         .dropdown.active>.link+.dropdown-menu {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
         }
-        
+
         .information-grid {
             display: grid;
             grid-template-columns: repeat(2, max-content);
             gap: 2rem;
         }
-        
+
         .dropdown-links {
             display: flex;
             flex-direction: column;
             gap: .25rem;
         }
-        
+
+        .logout {
+            margin-right: 25px;
+        }
+
         .logout a {
             text-decoration: none;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             font-size: 15px;
             background: purple;
             border-radius: 8px;
             transition: 0.4s;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            margin-left: 15px;
+            /* Adjusted margin */
         }
-        
+
         .logout a:hover {
             background: transparent;
             border: 1px solid purple;
         }
-        li{
-            list-style-type: none;
+
+        .footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            padding: 15px;
+            background-color: #050635;
+            color: white;
         }
-        
-        
+
+        .logo-container img {
+            height: 100px;
+            border-radius: 75px;
+        }
+
         @media screen and (max-width: 768px) {
+
             .nav-links {
                 display: none;
                 flex-direction: column;
-                position: absolute;
-                height: 100%;
-                width: 60%;
-                top: 50px;
-                right: 0;
-                overflow: hidden;
-                background-color: #12f7ff;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                overflow-y: auto;
+                /* Enable vertical scrolling if needed */
+                background-color: #050635;
+                text-align: center;
                 transform-origin: 0 0;
                 transition: transform 0.6s ease;
                 transition-delay: var(--delay-open);
+                z-index: 100;
             }
+
             .nav-links.show {
                 display: flex;
             }
+
             .nav-links li {
                 margin: 0;
                 text-align: center;
                 padding: 10px;
+                width: 100%;
             }
+
             .burger-menu {
                 display: block;
-                position: absolute;
-                padding: 15px;
-                top: 0;
-                right: 0;
+                position: fixed;
+                top: 15px;
+                right: 15px;
+                z-index: 101;
+                /* hamburger menu is displayed above navigation links */
             }
+
             .logout {
-                margin: 0;
-                text-align: center;
-                padding: 10px;
+                display: flex;
+                justify-content: flex-end;
+                margin-right: 15px;
             }
-            .hide {
-                display: none;
+
+            .logout a {
+                padding: 5px 10px;
+            }
+
+            .category-container {
+                width: 90%;
+                /* Adjust width to fit within smaller screens */
+                margin: 50px auto 0;
+                /* Adjust margin for centering */
             }
         }
     </style>
-    <title>Responsive Navigation</title>
 </head>
 
 <body>
+    <?php
+    // session_start(); // Start or resume the session
+
+    // Check if a category is selected, then set $_SESSION['categoryID']
+    if (isset($_GET['category'])) {
+        $_SESSION['categoryID'] = $_GET['category'];
+    }
+    $isMenuOpen = false; // Set this variable based on your logic to determine if the menu is open
+
+
+    ?>
+
     <header>
         <div class="navbar">
-            <div class="logo">QuizWiz</div>
+            <div class="logo-container">
+                <img src="../quiz_logo.jpeg" alt="QUIZ WIZ.png">
+            </div>
             <ul class="nav-links">
-             
-                <li><a href="#">Change </a></li>
+                <li><a href="../index.php">Home</a></li>
+
+
                 <div class="logout">
-                <a href="../shared/logout.php">Logout</a>
-             </div>
+                    <a href="../shared/logout.php">Logout</a>
+                </div>
             </ul>
-        
-        </div>
-        <div class="burger-menu">&#9776;</div>
-        </div>
+            <div class="burger-menu">&#9776;</div>
         </div>
     </header>
+
     <script>
+        let isMenuOpen = false;
+
         document.addEventListener('DOMContentLoaded', function() {
             const burgerMenu = document.querySelector('.burger-menu');
             const navLinks = document.querySelector('.nav-links');
@@ -211,30 +277,37 @@ include "../shared/footer.php";
             burgerMenu.addEventListener('click', function() {
                 navLinks.classList.toggle('show');
             });
+
+            // const closeBtn = document.querySelector('.closebtn');
+            // closeBtn.addEventListener('click', function() {
+            //     hamburger(false);
+            // });
         });
-        document.addEventListener('click', e => {
-            const isDropdownButton = e.target.matches("[data-dropdown-button]")
-            if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return
-            let currentDropdown
-            if (isDropdownButton) {
-                currentDropdown = e.target.closest('[data-dropdown]')
-                currentDropdown.classList.toggle('active')
-            }
-            document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
-                if (dropdown === currentDropdown) return
-                dropdown.classList.remove('active')
-            })
-        })
-        var burgerMenu = document.querySelector('.burger-menu');
 
-        function toggleMenu() {
-            burgerMenu.classList.toggle('hide');
+        function hamburger(open) {
+            isMenuOpen = open;
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+            const closeMenuButton = document.querySelector('.closebtn');
+            closeMenuButton.classList.toggle('hidden');
         }
-        burgerMenu.addEventListener('click', toggleMenu);
+        //     document.addEventListener('click', e =>{
+        //     const isDropdownButton = e.target.matches("[data-dropdown-button]")
+        //     if(!isDropdownButton && e.target.closest('[data-dropdown]') != null) return
+        //     let currentDropdown
+        //     if(isDropdownButton){
+        // currentDropdown = e.target.closest('[data-dropdown]')
+        // currentDropdown.classList.toggle('active')
+        //     }
+        //     document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+        //         if(dropdown === currentDropdown) return
+        //         dropdown.classList.remove('active')
+        //     })
+        // })
     </script>
-
-      
-   
+    <!-- <div class="footer">
+        <footer>&#169 Created By QuizWiz | All rights are reserved.</footer>
+    </div> -->
 </body>
 
 </html>

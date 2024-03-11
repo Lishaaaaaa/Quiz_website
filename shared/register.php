@@ -1,5 +1,5 @@
-<?php
-include("navbar.php");
+<?php 
+// include("navbar.php");
 include("config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -49,7 +49,6 @@ else
 
 //quizid and userid check for validating if the user have played the quiz earlier or not --done
 //user page
-//score board
 //timer 
 //admin page
 //if the user selects the back button he can see questions and can submit again.but the answer will be displayed which he had given first.

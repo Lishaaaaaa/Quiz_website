@@ -1,3 +1,7 @@
+<?php
+include "./shared/navbar.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +21,12 @@
         }
 
         form {
+            margin-top: 130px;
             width: 400px;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+           box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.5s ease-in-out;
         }
 
@@ -72,7 +77,7 @@
 
         .message-container {
             position: absolute;
-            top: 20px;
+            top: 140px;
             left: 50%;
             transform: translateX(-50%);
             width: 400px;
@@ -82,7 +87,7 @@
         }
 
         .message {
-            padding: 15px;
+            padding: 10px;
             margin-bottom: 10px;
             border-radius: 8px;
             font-weight: bold;

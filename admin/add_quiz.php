@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quizID = mysqli_insert_id($conn);
 
     // Insert new question
-    $sql = "INSERT INTO Questions (QuizID, QuestionText, Option1, Option2, Option3, Option4, CorrectOption) 
-            VALUES ('$quizID', '$question', '$option1', '$option2', '$option3', '$option4', '$correct_option')";
+    $sql = "INSERT INTO Questions (QuizID, QuestionText, Option1, Option2, Option3, Option4, CorrectOption,CategoryID) 
+            VALUES ('$quizID', '$question', '$option1', '$option2', '$option3', '$option4', '$correct_option','$categoryID')";
     mysqli_query($conn, $sql);
 
     // Redirect user to a confirmation page or elsewhere

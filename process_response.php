@@ -39,9 +39,9 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Finish') {
             }
           
             // Output the type and value of selectedOption and correctOption for each question
-            // echo "Question ID: $questionID <br>";
-            // echo "Selected Option: $selectedOption | Type: " . gettype($selectedOption) . "<br>";
-            // echo "Correct Option: $correctOption | Type: " . gettype($correctOption) . "<br><br>";
+            echo "Question ID: $questionID <br>";
+            echo "Selected Option: $selectedOption | Type: " . gettype($selectedOption) . "<br>";
+            echo "Correct Option: $correctOption | Type: " . gettype($correctOption) . "<br><br>";
         }
     }
 
