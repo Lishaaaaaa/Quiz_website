@@ -12,7 +12,7 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Finish') {
     // Initialize total score
     $totalScore = 0;
 
-    // Get responses from the form
+    // Gets responses from the form
     $responses = $_POST['responses'];
 
     // Iterate over responses and calculate score
@@ -39,14 +39,14 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Finish') {
             }
           
             // Output the type and value of selectedOption and correctOption for each question
-            echo "Question ID: $questionID <br>";
-            echo "Selected Option: $selectedOption | Type: " . gettype($selectedOption) . "<br>";
-            echo "Correct Option: $correctOption | Type: " . gettype($correctOption) . "<br><br>";
+            // echo "Question ID: $questionID <br>";
+            // echo "Selected Option: $selectedOption | Type: " . gettype($selectedOption) . "<br>";
+            // echo "Correct Option: $correctOption | Type: " . gettype($correctOption) . "<br><br>";
         }
     }
 
     // Output total score outside the loop
-    echo  "Total score: $totalScore<br>";
+    // echo  "Total score: $totalScore<br>";
 
     // Insert score into Responses table
     $insert_score_sql = "INSERT INTO Responses (UserID, QuizID, Score,CategoryID) VALUES (?, ?, ?,?)";

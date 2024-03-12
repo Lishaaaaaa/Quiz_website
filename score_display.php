@@ -4,7 +4,7 @@
     <title>Quiz Score</title>
     <style>
         body {
-            margin-top: 100px; /* Adjusted margin-top to accommodate the navbar */
+            margin-top: 100px; 
             text-align: center;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;

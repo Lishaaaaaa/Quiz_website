@@ -148,7 +148,7 @@
                     $stmt->bind_param("i", $quizID);
                     $stmt->execute();
                     $first_question_result = $stmt->get_result();
-
+                      
                     if ($first_question_result->num_rows > 0) {
                         $first_question_row = $first_question_result->fetch_assoc();
                         $questionID = $first_question_row['FirstQuestionID'];
@@ -168,7 +168,7 @@
                 if ($quiz_result->num_rows > 0) {
                     $quiz_row = $quiz_result->fetch_assoc();
                     $quiz_title = $quiz_row['Title'];
-
+          
                     // Fetch all questions for the given quiz ID
                     $question_sql = "SELECT * FROM Questions WHERE QuizID = ?";
                     $stmt = $conn->prepare($question_sql);
