@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         for ($i = 1; $i <= 4; $i++) {
             $option_values[] = mysqli_real_escape_string($conn, $_POST['option_' . $i . '_' . $question_id]);
         }
-        $update_question_status = "UPDATE Questions SET QuestionText = ?, Option1 = ?, Option2 = ?, Option3 = ?, Option4 = ?, CorrectOption = ? WHERE QuestionID = ?";
+        $update_question_status = "UPDATE Questions SET Question = ?, Option1 = ?, Option2 = ?, Option3 = ?, Option4 = ?, CorrectOption = ? WHERE QuestionID = ?";
         $stmt = $conn->prepare($update_question_status);
         $stmt->bind_param("ssssssi", $new_question_text, $option_values[0], $option_values[1], $option_values[2], $option_values[3], $new_correct_option, $question_id);
         $stmt->execute();
@@ -215,7 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="question">
                             <div class="section">
                                 <label for="question_<?php echo $question['QuestionID']; ?>" class="question">Question <?php echo $questionCounter; ?>:</label>
-                                <input type="text" name="question_<?php echo $question['QuestionID']; ?>" id="question_<?php echo $question['QuestionID']; ?>" class="input-box" value="<?php echo $question['QuestionText']; ?>">
+                                <input type="text" name="question_<?php echo $question['QuestionID']; ?>" id="question_<?php echo $question['QuestionID']; ?>" class="input-box" value="<?php echo $question['Question']; ?>">
                             </div>
 
                             <!-- Display options -->

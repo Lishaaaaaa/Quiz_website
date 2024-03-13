@@ -183,7 +183,7 @@
                         echo "<input type='hidden' name='quizID' value='" . $quizID . "'>";
                         echo "<input type='hidden' name='categoryID' value='" . $categoryID . "'>";
                         while ($question_row = $question_result->fetch_assoc()) {
-                            $question_text = $question_row['QuestionText'];
+                            $question_text = $question_row['Question'];
                             $question_id = $question_row['QuestionID'];
 
                             echo "<div class='question-container'>";

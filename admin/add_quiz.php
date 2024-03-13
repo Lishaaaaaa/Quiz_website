@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quizID = mysqli_insert_id($conn);
 
     // Insert new question
-    $sql = "INSERT INTO Questions (QuizID, QuestionText, Option1, Option2, Option3, Option4, CorrectOption,CategoryID) 
+    $sql = "INSERT INTO Questions (QuizID, Question, Option1, Option2, Option3, Option4, CorrectOption,CategoryID) 
             VALUES ('$quizID', '$question', '$option1', '$option2', '$option3', '$option4', '$correct_option','$categoryID')";
     mysqli_query($conn, $sql);
 

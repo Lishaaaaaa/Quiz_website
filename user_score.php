@@ -27,19 +27,19 @@ td {
 }
 
 th {
-    background-color: #00ffa0;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(203, 88, 235, 0.6963118010876226) 0%, rgba(174, 112, 224, 1) 91%, rgba(174, 115, 236, 1) 100%, rgba(0, 255, 160, 1) 100%, rgba(63, 177, 248, 1) 100%);
 }
 
 tr:nth-child(even) {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(203, 88, 235, 0.6963118010876226) 0%, rgba(174, 112, 224, 1) 91%, rgba(174, 115, 236, 1) 100%, rgba(0, 255, 160, 1) 100%, rgba(63, 177, 248, 1) 100%);
-    /* Light gray for even rows */
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    
 }
 
-tr:nth-child(odd) {
+/* tr:nth-child(odd) {
     background-color: #e9e9e9;
-    /* Lighter gray for odd rows */
-}
+    
+} */
 
 table, th, td {
     border: 1px solid black; /* Adding border for the table, th, and td */

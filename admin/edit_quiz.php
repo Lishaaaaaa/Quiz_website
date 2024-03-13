@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<h2>Quizzes</h2>";
                 echo "<ul>";
                 while ($row = $quizzes_result->fetch_assoc()) {
-                    echo "<li><a href='view_questions.php?quizID={$row['QuizID']}&categoryID={$row['CategoryID']}'>{$row['Title']}</a></li>";
+                    echo "<li><a href='update.php?quizID={$row['QuizID']}&categoryID={$row['CategoryID']}'>{$row['Title']}</a></li>";
                 }
                 echo "</ul>";
                 echo "</div>";
