@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +9,24 @@
     <style>
         body {
             background-color: #f0f0f0;
+            margin-top: 40px; /* Adjust margin top to accommodate timeUpMessage */
         }
 
+        #timeUpMessage {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #dc3545;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        display: none;
+        z-index: 100;
+        width: 300px; /* Adjust the width as needed */
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
         #timer-container {
             position: fixed;
             top: 20px;
@@ -29,8 +48,6 @@
             transform: rotate(-90deg);
             transform-origin: center;
         }
-
-     
 
         #timer-foreground {
             stroke: #007bff; 
@@ -81,32 +98,42 @@
 <script>
     window.onload = function() {
         // Set the countdown time in minutes
-        var countdownMinutes = 2; // Change this to 2 for 2 minutes
+        var countdownMinutes = 1; 
         var secondsRemaining = countdownMinutes * 60;
         var timerNumber = document.getElementById('timer-number');
+        var submitButton = document.getElementById('finishButton');
 
         // Function to update the timer display
         function updateTimer() {
             var minutes = Math.floor(secondsRemaining / 60);
             var seconds = secondsRemaining % 60;
-            var timerText = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+            var timerText = minutes.toString().padStart(1, '0') + ':' + seconds.toString().padStart(1, '0');
             timerNumber.textContent = timerText;
             secondsRemaining--;
 
             // Check if time has run out
             if (secondsRemaining < 0) {
                 clearInterval(timerInterval);
-                timerNumber.textContent = "02:00";
+                timerNumber.textContent = "01:00";
+                displayTimeUpMessage();
+                submitButton.disabled = true; // Disable the submit button
             }
         }
 
         // Update the timer every second
         var timerInterval = setInterval(updateTimer, 1000);
+
+        // Function to display time-up message
+        function displayTimeUpMessage() {
+            var timeUpMessage = document.getElementById('timeUpMessage');
+            timeUpMessage.textContent = "Time's up!";
+            timeUpMessage.style.display = 'block';
+        }
     };
 </script>
-
 </head>
 <body>
+    <div id="timeUpMessage"></div>
     <div id="timer-container">
         <svg width="100%" height="100%" viewBox="-100 -100 200 200">
             <!-- Background Circle -->
@@ -121,9 +148,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <?php
-                session_start();
                 include("./shared/config.php");
-                //include("./shared/navbar.php");
+                
 
                 // Check if the user is logged in
                 if (!isset($_SESSION['userID'])) {
@@ -207,11 +233,8 @@
                             echo "</div>";
                         }
 
-                        // Add time up message container
-                        echo "<div id='timeUpMessage'></div>";
-
                         // Add submit button
-                        echo "<input class='btn btn-primary' type='submit' name='submit' value='Finish'>";
+                        echo "<input id='finishButton' class='btn btn-primary' type='submit' name='submit' value='Finish'>";
                         echo "</form>";
 
                     } else {
@@ -229,4 +252,3 @@
     </div>
 </body>
 </html>
-
