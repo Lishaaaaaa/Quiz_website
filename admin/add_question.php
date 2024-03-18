@@ -18,6 +18,7 @@ if ($quizID !== null) {
     echo "<form action='insert_question.php' method='post'>";
     echo "<input type='hidden' name='quizID' value='$quizID'>";
     echo "Question Text: <input type='text' name='questionText'><br>";
+    echo "Image: <input type='file' name='qimg'><br>";
     echo "Option 1: <input type='text' name='option1'><br>";
     echo "Option 2: <input type='text' name='option2'><br>";
     echo "Option 3: <input type='text' name='option3'><br>";
@@ -29,3 +30,4 @@ if ($quizID !== null) {
     echo "Invalid quiz.";
 }
 ?>
+

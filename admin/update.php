@@ -56,6 +56,7 @@ if (isset($_GET['categoryID']) && isset($_GET['quizID'])) {
     }
 }
 
+
 // Handle the form submission for updating the quiz and category
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Update category name
@@ -78,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $updateMessage .= "Error updating quiz title: " . mysqli_error($conn);
     }
 
-
     // Update questions and correct answers
     while ($question = mysqli_fetch_assoc($questions_result)) {
         $question_id = $question['QuestionID'];
@@ -88,9 +88,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         for ($i = 1; $i <= 4; $i++) {
             $option_values[] = mysqli_real_escape_string($conn, $_POST['option_' . $i . '_' . $question_id]);
         }
-        $update_question_status = "UPDATE Questions SET Question = ?, Option1 = ?, Option2 = ?, Option3 = ?, Option4 = ?, CorrectOption = ? WHERE QuestionID = ?";
+
+        // Check if a new image is uploaded for this question
+        if (!empty($_FILES['image_' . $question_id]['name'])) {
+            $dest_file_path = "./shared/images/" . $_FILES['image_' . $question_id]['name'];
+            move_uploaded_file($_FILES['image_' . $question_id]['tmp_name'], $dest_file_path);
+            $imgpath = $dest_file_path; // Use the new image path
+        } else {
+            // Use the existing image path if no new image is uploaded
+            $imgpath = $question['imgpath'];
+        }
+
+        // Update the question in the database
+        $update_question_status = "UPDATE Questions SET Question = ?, Option1 = ?, Option2 = ?, Option3 = ?, Option4 = ?, CorrectOption = ?, imgpath = ? WHERE QuestionID = ?";
         $stmt = $conn->prepare($update_question_status);
-        $stmt->bind_param("ssssssi", $new_question_text, $option_values[0], $option_values[1], $option_values[2], $option_values[3], $new_correct_option, $question_id);
+        $stmt->bind_param("sssssssi", $new_question_text, $option_values[0], $option_values[1], $option_values[2], $option_values[3], $new_correct_option, $imgpath, $question_id);
         $stmt->execute();
         if (!$stmt->affected_rows > 0) {
             $updateMessage .= "Error updating question: " . mysqli_error($conn);
@@ -99,6 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: success_page.php");
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -183,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-align: center;
             font-family: 'Roboto', sans-serif;
             color: #333;
-           
+
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -193,11 +206,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <div class="container">
+        
         <h2>Edit Quiz</h2>
         <?php if (!empty($updateMessage)) : ?>
             <div class="message"><?php echo $updateMessage; ?></div>
         <?php endif; ?>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <?php if (!empty($categoryName) && !empty($quizTitle)) : ?>
                 <div class="section">
                     <label for="category_name" class="category-label">Category:</label>
@@ -211,27 +225,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="question-container">
                     <?php
                     $questionCounter = 1; // Initialize question counter
-                    while ($question = mysqli_fetch_assoc($questions_result)) : ?>
+                    while ($question = mysqli_fetch_assoc($questions_result)) :
+                    ?>
                         <div class="question">
                             <div class="section">
                                 <label for="question_<?php echo $question['QuestionID']; ?>" class="question">Question <?php echo $questionCounter; ?>:</label>
                                 <input type="text" name="question_<?php echo $question['QuestionID']; ?>" id="question_<?php echo $question['QuestionID']; ?>" class="input-box" value="<?php echo $question['Question']; ?>">
                             </div>
 
+                            <!-- Display image input only if the question has an image -->
+                            <?php if (!empty($question['imgpath'])) : ?>
+                                <div class="section">
+                                    <label for="image_<?php echo $question['QuestionID']; ?>">Image:</label>
+                                    <input type="file" name="image_<?php echo $question['QuestionID']; ?>" id="image_<?php echo $question['QuestionID']; ?>">
+                                    <!-- <img src="<?php echo $question['imgpath']; ?>" alt="Existing Image" style="max-width: 200px;"> -->
+                                </div>
+                            <?php endif; ?>
+                            
+
+                          
                             <!-- Display options -->
                             <div class="option-container">
                                 <?php for ($i = 1; $i <= 4; $i++) : ?>
-                                    <?php if ($i <= 2) : ?>
-                                        <div class="option">
-                                            <label for="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>">Option <?php echo $i; ?>:</label>
-                                            <input type="text" name="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>" id="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>" value="<?php echo $question['Option' . $i]; ?>">
-                                        </div>
-                                    <?php else : ?>
-                                        <div class="option">
-                                            <label for="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>">Option <?php echo $i; ?>:</label>
-                                            <input type="text" name="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>" id="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>" value="<?php echo $question['Option' . $i]; ?>">
-                                        </div>
-                                    <?php endif; ?>
+                                    <div class="option">
+                                        <label for="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>">Option <?php echo $i; ?>:</label>
+                                        <input type="text" name="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>" id="option_<?php echo $i; ?>_<?php echo $question['QuestionID']; ?>" value="<?php echo $question['Option' . $i]; ?>">
+                                    </div>
                                 <?php endfor; ?>
                             </div>
 
@@ -239,8 +258,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <label class="correct-option" for="correct_option_<?php echo $question['QuestionID']; ?>">Correct Option:</label>
                             <input type="text" name="correct_option_<?php echo $question['QuestionID']; ?>" id="correct_option_<?php echo $question['QuestionID']; ?>" value="<?php echo $question['CorrectOption']; ?>">
                         </div>
-                    <?php $questionCounter++; // Increment question counter
-                    endwhile; ?>
+                    <?php
+                        $questionCounter++;
+                    endwhile;
+                    ?>
                 </div>
                 <div class="section">
                     <button type="submit" name="update_quiz">Update Quiz</button>

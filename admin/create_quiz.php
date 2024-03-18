@@ -75,10 +75,19 @@
         button[type="submit"]:hover {
             background-color: #45a049;
         }
+        @media screen and (max-width: 780px) {
+            form{
+            width: 70%;
+           
+          }
+       
+
+        }
     </style>
 </head>
 <body>
-    <form id="quizForm" action="add_quiz.php" method="post">
+<form id="quizForm" action="add_quiz.php" method="post" enctype="multipart/form-data">
+
         <div>
             <label for="newCategoryName">New Category Name:</label>
             <input type="text" name="newCategoryName" id="newCategoryName" required>
@@ -89,27 +98,7 @@
             <input type="text" name="newtitle" required>
         </div>
 
-        <div>
-            <label for="question">Question:</label>
-            <textarea name="question" id="question" required></textarea>
-        </div>
-
-        <!-- Font Awesome icon -->
-        <i class="fas fa-pen-alt"></i>
-
-        <div class="options">
-            <label for="options">Options:</label>
-            <input type="text" name="option1" required>
-            <input type="text" name="option2" required>
-            <input type="text" name="option3" required>
-            <input type="text" name="option4" required>
-        </div>
-
-        <div>
-            <label for="correct_option">Correct Option:</label>
-            <input type="text" name="correct_option" required>
-        </div>
-
+       
         <button type="submit">Submit</button>
     </form>
 

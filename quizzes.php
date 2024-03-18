@@ -48,10 +48,10 @@
         color: #000;
     }
 
-    /* Responsive design for smaller screens */
-    @media screen and (max-width: 768px) {
+
+    @media screen and (max-width: 780px) {
         .quiz-container {
-            margin-top: 70px; /* Adjust margin for smaller screens */
+            margin-top: 130px; 
         }
 
         .quiz-link {

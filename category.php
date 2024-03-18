@@ -8,14 +8,14 @@
     body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
-        margin: 0; /* Reset default margin */
-        padding-bottom: 50px; /* Add padding to the bottom to make space for the footer */
+        margin: 0; 
+        padding-bottom: 50px;
     }
     .container {
         width: 100%;
         max-width: 960px;
-        margin: 125px auto 20px; /* Adjusted margin-top */
-        padding: 20px;
+        margin: 125px auto 20px; 
+        padding: 10px;
         position: relative;
     }
 
@@ -23,7 +23,7 @@
         width: 50%; /* Adjust the width as needed */
         margin: 0 auto; /* Center the container horizontally */
         box-sizing: border-box; /* Include padding and border in the width */
-        position: sticky; /* Add sticky positioning */
+        position: sticky; 
         top: 350px; 
     }
 
@@ -44,9 +44,9 @@
     }
 
     .category-link:hover {
-        background-image: linear-gradient(135deg, #4CAF50, #007bff); /* Gradient background */
-        color: #fff; /* Change text color to white */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase box shadow */
+        background-image: linear-gradient(135deg, #4CAF50, #007bff); 
+        color: #fff; /* text color to white */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     }
 
     input[type="text"],
@@ -86,6 +86,20 @@
     h1{
         text-align: center;
     }
+
+
+@media screen and (max-width: 780px) {
+    .container {
+        margin: 100px auto 10px;
+    padding: 1px;
+    }
+
+    .category-container {
+        width: 80%; 
+        top: 250px; 
+    }
+}
+
 </style>
 </head>
 <body>

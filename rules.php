@@ -56,8 +56,8 @@
             background-color: #45a049;
         }
 
-        /* Media query for smaller screens */
-        @media screen and (max-width: 768px) {
+      
+        @media screen and (max-width: 780px) {
             /* Adjust the max-width for smaller screens */
             .quiz-rules {
                 max-width: 80%;
@@ -88,7 +88,7 @@
             <h1>Rules for <?php echo $quizTitle; ?> Quiz</h1>
             <hr>
             <div class="info-list">
-                <div class="info">1. You will have only <span>60 seconds</span> to play the quiz.</div>
+                <div class="info">1. You will have only <span>120 seconds</span> to play the quiz.</div>
                 <div class="info">2. Each quiz contains 10 questions.</div>
                 <div class="info">3.The timer starts as soon as the question is displayed.</div>
                 <div class="info">4. You can't exit from the Quiz while you're playing.</div>

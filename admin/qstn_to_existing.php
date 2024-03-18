@@ -134,16 +134,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .message-container {
             text-align: center;
         }
-        @media screen and (max-width: 480px) {
-            form {
-            margin-top: 50px;
-        }
-           ul{
-            display: flex;
-            flex-direction: column;
-           gap: 20px;
-           }
-        }
     </style>
 </head>
 
@@ -175,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<h2>Quizzes</h2>";
                 echo "<ul>";
                 while ($row = $quizzes_result->fetch_assoc()) {
-                    echo "<li><a href='update.php?quizID={$row['QuizID']}&categoryID={$row['CategoryID']}'>{$row['Title']}</a></li>";
+                    echo "<li><a href='insert_question.php?quizID={$row['QuizID']}&categoryID={$row['CategoryID']}'>{$row['Title']}</a></li>";
                 }
                 echo "</ul>";
                 echo "</div>";
@@ -185,7 +175,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         ?>
     </div>
-
 </body>
 
 </html>

@@ -16,7 +16,6 @@
         .container {
             max-width: 560px;
             margin: 150px auto;
-            /* margin-top: 150px; */
             padding: 20px;
             border-radius: 5px;
             background-color: #fff;
@@ -52,6 +51,26 @@
 
         tr:hover {
             background-color: #dddddd;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                margin-top: 100px;
+            }
+
+            .container {
+                max-width: 280px;
+                font-size: 12px;
+                
+            }
+
+            table {
+                margin: 0 auto; /* Center the table horizontally */
+                width: 80%;
+                /* Ensure the table takes up 100% width of its container */
+                max-width: none;
+                /* Remove max-width limit to allow table to expand */
+            }
         }
     </style>
 </head>

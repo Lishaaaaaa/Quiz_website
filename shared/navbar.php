@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <title>Responsive Navigation</title>
     <style>
         body {
@@ -37,7 +37,7 @@
             color: black;
             font-size: 1.5em;
         }
-        
+
 
         .nav-links {
             list-style: none;
@@ -45,18 +45,19 @@
             margin: 0;
             padding: 0;
         }
-        .nav-links a {
-    text-decoration: none;
-    color: rgb(220, 219, 219);
-    font-weight: bold;
-    font-size: 1.1em; 
-    margin: 0 15px;
-    letter-spacing: 1px;
-}
 
-.nav-links a:hover {
-    color: purple;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(220, 219, 219);
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 0 15px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: purple;
+        }
 
         .nav-links a:hover {
             color: purple;
@@ -69,7 +70,7 @@
             cursor: pointer;
             padding: 0;
             margin-right: 15px;
-            /* Adjust margin for alignment */
+           
         }
 
         .link {
@@ -155,16 +156,7 @@
             border: 1px solid purple;
         }
 
-        .footer {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            text-align: center;
-            padding: 15px;
-            background-color: #050635;
-            color: white;
-        }
+     
 
         .logo-container img {
             height: 100px;
@@ -172,61 +164,63 @@
         }
 
         @media screen and (max-width: 768px) {
-  
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        overflow-y: auto; /* Enable vertical scrolling if needed */
-        background-color: #050635;
-        text-align: center;
-        transform-origin: 0 0;
-        transition: transform 0.6s ease;
-        transition-delay: var(--delay-open);
-        z-index: 100; 
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    .nav-links li {
-        margin: 0;
-        text-align: center;
-        padding: 10px;
-        width: 100%;
-    }
-
-    .burger-menu {
-        display: block;
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 101; /* hamburger menu is displayed above navigation links */
-    }
-
-    .logout {
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 15px;
-    }
-
-    .logout a {
-        padding: 5px 10px;
-    }
 
 
-    .category-container {
-        width: 90%; /* Adjust width to fit within smaller screens */
-        margin: 50px auto 0; /* Adjust margin for centering */
-    }
-}
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                overflow-y: auto;
+                background-color: #050635;
+                text-align: center;
+                transform-origin: 0 0;
+                transition: transform 0.6s ease;
+                transition-delay: var(--delay-open);
+                z-index: 100;
+            }
 
+            .nav-links.show {
+                display: flex;
+                margin-top: 130px;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 10px;
+                width: 100%;
+            }
+
+            .burger-menu {
+                display: block;
+                position: fixed;
+                top: 15px;
+                right: 15px;
+                z-index: 101;
+                /* hamburger menu is displayed above navigation links */
+            }
+
+            .logout {
+                display: flex;
+                justify-content: flex-end;
+                margin:0 auto;
+            }
+
+            .logout a {
+                padding: 5px 10px;
+            }
+
+
+            .category-container {
+                width: 90%;
+                margin: 50px auto 0;
+            
+            }
+        }
     </style>
 </head>
 
@@ -240,7 +234,7 @@
     }
     $isMenuOpen = false; // Set this variable based on your logic to determine if the menu is open
 
-   
+
     ?>
 
     <header>
@@ -252,7 +246,7 @@
                 <li><a href="./index.php">Home</a></li>
                 <li><a href="./dashboard.php">User Dashboard</a></li>
                 <li><a href="category.php">Category</a></li>
-                
+
 
                 <li><a href="contact.php">Contact Us</a></li>
                 <div class="logout">
@@ -264,7 +258,7 @@
     </header>
 
     <script>
-        let isMenuOpen = false; 
+        let isMenuOpen = false;
 
         document.addEventListener('DOMContentLoaded', function() {
             const burgerMenu = document.querySelector('.burger-menu');
@@ -274,36 +268,13 @@
                 navLinks.classList.toggle('show');
             });
 
-            // const closeBtn = document.querySelector('.closebtn');
-            // closeBtn.addEventListener('click', function() {
-            //     hamburger(false);
-            // });
+        
         });
 
-        function hamburger(open) {
-            isMenuOpen = open;
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('show');
-            const closeMenuButton = document.querySelector('.closebtn');
-            closeMenuButton.classList.toggle('hidden');
-        }
-        //     document.addEventListener('click', e =>{
-        //     const isDropdownButton = e.target.matches("[data-dropdown-button]")
-        //     if(!isDropdownButton && e.target.closest('[data-dropdown]') != null) return
-        //     let currentDropdown
-        //     if(isDropdownButton){
-        // currentDropdown = e.target.closest('[data-dropdown]')
-        // currentDropdown.classList.toggle('active')
-        //     }
-        //     document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
-        //         if(dropdown === currentDropdown) return
-        //         dropdown.classList.remove('active')
-        //     })
-        // })
+     
+  
     </script>
-    <!-- <div class="footer">
-        <footer>&#169 Created By QuizWiz | All rights are reserved.</footer>
-    </div> -->
+ 
 </body>
 
 </html>

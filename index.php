@@ -11,22 +11,28 @@
             padding: 0;
             box-sizing: border-box;
         }
-footer{
-    background-color: #050635;
-    text-align: center;
-    padding: 10px;
-    color: #fff;
-    font-size: 20px;
-}
+
+        footer {
+            background-color: #050635;
+            text-align: center;
+            padding: 10px;
+            color: #fff;
+            font-size: 20px;
+        }
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+
         }
 
-        /* Navbar styles */
+
+
         .navbar {
             background-color: #050635;
             padding: 11px 20px;
@@ -173,13 +179,28 @@ footer{
             transform: scale(1.1);
         }
 
+        .burger-menu {
+            display: none;
+       
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 0;
+            margin-right: 15px;
+        }
+
+        /* Adjust the position of the hamburger menu */
+     
+
+
         @media screen and (max-width: 768px) {
             .container {
+                max-width: 90%;
                 padding: 10px;
             }
 
-            .cat {
-                width: 100%;
+            .cat-container {
+                flex-direction: column;
             }
 
             .navbar {
@@ -187,14 +208,61 @@ footer{
                 align-items: flex-start;
             }
 
+
+            .cat {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .slider {
+                height: 250px;
+            }
+
+            .slide img {
+                height: 250px;
+            }
+
+            .navbar {
+                padding: 10px;
+
+            }
+
             .navbar-links {
-                margin-top: 15px;
-                justify-content: center;
+                display: none;
+                flex-direction: column;
+                background-color: #050635;
+                position: absolute;
+                top: 60px;
+                /* Adjust based on your navbar height */
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                box-sizing: border-box;
+                z-index: 100;
             }
 
             .navbar-links li {
-                margin-right: 0;
+                margin: 0;
+                text-align: center;
+                padding: 10px;
+                width: 100%;
             }
+
+            .navbar-links.show {
+                display: flex;
+                margin-top: 65px;
+            }
+
+            .burger-menu {
+                display: inline;
+          
+                top: 15px;
+                right: 15px;
+                z-index: 101;
+
+            }
+
+
         }
     </style>
 </head>
@@ -211,6 +279,8 @@ footer{
             <li><a href="./shared/register.html">Sign Up</a></li>
             <li><a href="./shared/login.html">Sign In</a></li>
         </ul>
+        <div class="burger-menu">&#9776;</div>
+
     </div>
     <!-- Slider container -->
     <div id="home">
@@ -225,7 +295,7 @@ footer{
             </div>
 
             <div class="slide">
-                <img src="./images/quiz3.jpg" alt="" />
+                <img src="./images/game.avif" alt="" />
             </div>
 
             <div class="slide">
@@ -376,6 +446,22 @@ footer{
             });
         });
     </script>
+    <script>
+   document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navLinks = document.querySelector('.navbar-links');
+
+    burgerMenu.addEventListener('click', function () {
+        navLinks.classList.toggle('show');
+        
+        // Toggle the "fixed" class on the hamburger menu based on the visibility of navbar links
+        burgerMenu.classList.toggle('fixed', navLinks.classList.contains('show'));
+    });
+});
+
+    </script>
+
+
 </body>
 
 </html>

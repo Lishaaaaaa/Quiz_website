@@ -1,11 +1,10 @@
+
 <?php
 session_start();
 include "../shared/config.php";
 include "navbar.php"
 
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,20 +15,16 @@ include "navbar.php"
         body {
             font-family: cursive;
             background-color: #f4f4f4;
-            padding: 20px;
-            margin-top: 120px;
-            background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(203,88,235,0.6963118010876226) 1%, rgba(174,112,224,1) 73%, rgba(174,115,236,1) 100%, rgba(0,255,160,1) 100%, rgba(63,177,248,1) 100%); }
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(203, 88, 235, 0.6963118010876226) 1%, rgba(174, 112, 224, 1) 73%, rgba(174, 115, 236, 1) 100%, rgba(0, 255, 160, 1) 100%, rgba(63, 177, 248, 1) 100%);
+        }
 
         h2 {
             text-align: center;
-
         }
 
         .category-container {
             width: 50%;
-            /* Adjust the width as needed */
-            /* margin: 0px auto; */
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
@@ -60,27 +55,52 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(203,88,235,0.69631180
         h1 {
             text-align: center;
         }
+        li{
+            list-style: none;
+        }
+
+        .container {
+            margin-top: 150px;
+        }
+
+        @media screen and (max-width: 780px) {
+            .category-container {
+                width: 80%;
+                margin: 0 auto; /* Center the category container */
+            }
+          
+
+            .category-link {
+                width: 100%;
+            }
+            ul{
+                width: 200px;
+                margin: 0 auto; /* Center the unordered list */
+            
+            }
+        }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to the Quiz Website Admin Panel</h1>
+    <div class="container">
+        <h1>Welcome to the Admin Panel</h1>
 
-    <h2>Manage Quizzes</h2>
-    <ul>
-        <li><a class='category-link' href="create_quiz.php">Create New Quiz</a></li>
-        <li><a class='category-link' href="edit_quiz.php">Edit Existing Quiz</a></li>
-        <li><a class='category-link' href="delete_quiz.php">Delete Quiz</a></li>
-    </ul>
+        <h2>Manage Quizzes</h2>
+        <ul>
+            <li><a class='category-link' href="create_quiz.php">Create New Quiz</a></li>
+            <li><a class='category-link' href="edit_quiz.php">Edit Existing Quiz</a></li>
+            <li><a class='category-link' href="qstn_to_existing.php">Add Questions to Existing Quiz</a></li>
+            <li><a class='category-link' href="delete_quiz.php">Delete Quiz</a></li>
+        </ul>
 
-    <h2>Manage Users</h2>
-    <ul>
-        <li><a class='category-link' href="view_users.php">View Users</a></li>
-    </ul>
-
-
-
-    <!-- <h2>Settings</h2>
+        <h2>Manage Users</h2>
+        <ul>
+            <li><a class='category-link' href="view_users.php">View Users</a></li>
+        </ul>
+        
+    </div>
+        <!-- <h2>Settings</h2>
     <ul>
         <li><a href="change_password.php">Change Password</a></li>
        

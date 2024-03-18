@@ -53,6 +53,15 @@
     .dashboard-link:hover {
         background-color: #0056b3;
     }
+    @media screen and (max-width: 780px) {
+    body {
+        margin-top: 100px; /* Reduce the top margin for larger screens */
+    }
+    .container {
+        width: 80%; /* Adjust container width for larger screens */
+    }
+}
+
 </style>
 </head>
 <body>
@@ -63,7 +72,6 @@
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID']; // Initialize $userID if the session variable is set
 } else {
-    // Handle case where userID session variable is not set
     echo "User ID is not set";
 }
 ?>

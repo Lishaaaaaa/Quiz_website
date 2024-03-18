@@ -13,7 +13,6 @@
     }
     .container {
         width: 60%; /* Adjusted width */
-       
         margin: 0px auto;
         padding: 20px;
         background-color: #fff;
@@ -25,7 +24,7 @@
         margin-bottom: 20px;
     }
     table {
-        width: 100%; /* Adjusted width */
+        width: 100%; 
         border-collapse: collapse;
     }
     td {
@@ -44,6 +43,19 @@
     }
     tr:hover {
         background-color: #dddddd;
+    }
+    @media screen and (max-width:780px) {
+        .container{
+            width:70%;
+            font-size: 14px;
+            margin-top: 150px;
+            
+        }
+        table{
+            width: 60%;  
+        }
+     
+        
     }
 </style>
 </head>

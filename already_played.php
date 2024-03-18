@@ -30,6 +30,22 @@
             background-color: #007bff;
             color: #ffffff;
         }
+        @media screen and (max-width: 600px) {
+    .content {
+        margin-top: 120px;
+    }
+    
+    p {
+        margin-top: 20px; /* Adjust margin-top for paragraphs */
+        font-size: 14px; /* Reset font-size for paragraphs */
+    }
+
+    .quiz-link {
+        margin: 5px auto; /* Center quiz links horizontally */
+        width: 120px; /* Adjust width of quiz links for smaller screens */
+    }
+}
+
     </style>
 </head>
 <body>

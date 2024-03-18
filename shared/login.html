@@ -219,6 +219,31 @@
         @media screen and (max-width: 400px) {
             .form {
                 padding: 20px 10px;
+                max-width: 90%;
+            }
+            .form-content header {
+                font-size: 24px;
+            }
+            .field.input-field input,
+            .field.input-field input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .form {
+                max-width: 80%;
+            }
+            .form-content header {
+                font-size: 24px;
+            }
+            .field.input-field input,
+            .field.input-field input[type="submit"] {
+                font-size: 14px;
             }
         }
     </style>

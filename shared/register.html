@@ -173,8 +173,28 @@
         }
         
         @media screen and (max-width: 400px) {
-            .form {
-                padding: 20px 10px;
+            .form.signup {
+                padding: 20px;
+                max-width: 90%;
+            }
+            .field.input-field input,
+            .field.input-field input[type="submit"] {
+                height: 30px;
+                font-size: 14px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .forms {
+                flex-direction: column;
+                align-items: center;
+            }
+            .form.signup {
+                max-width: 90%;
+            }
+            .field.input-field input,
+            .field.input-field input[type="submit"] {
+                font-size: 16px;
             }
         }
     </style>
@@ -187,15 +207,15 @@
                 <header>Signup</header>
                 <form method="post" action="register.php">
                     <div class="field input-field">
-                        <!-- <label for="username">User Name:</label> -->
+
                         <input type="text" name="username" class="input" placeholder="User Name" required>
                     </div>
                     <div class="field input-field">
-                        <!-- <label for="email">Email:</label> -->
+
                         <input type="email" name="email" class="input" placeholder="Email" required>
                     </div>
                     <div class="field input-field">
-                        <!-- <label for="password">Password:</label> -->
+
                         <input type="password" name="password" class="password" placeholder="Password" required>
                     </div>
                     <div class="field button-field">
@@ -206,12 +226,7 @@
                     Already have an Account? <a href="login.html">Sign in here</a>
                 </div>
                 <div class="line"></div>
-                <!-- <div class="media-options">
-                    <a href="#" class="field facebook">
-                        <i class='bx bxl-facebook facebook-icon'></i>
-                        <span>Login with Facebook</span>
-                    </a>
-                </div> -->
+
                 <div class="media-options">
                     <a href="#" class="field google">
                         <img src="../images/googleimg.png" alt="" class="google-img">

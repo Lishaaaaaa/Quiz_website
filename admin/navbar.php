@@ -7,14 +7,14 @@
 
     <title>Responsive Navigation</title>
     <style>
-        body {
+        /* body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
             margin: 100px;
-        }
+        } */
 
 
         li {
@@ -74,8 +74,10 @@
             cursor: pointer;
             padding: 0;
             margin-right: 15px;
+         
           
         }
+        
 
         .link {
             background: none;
@@ -178,7 +180,7 @@
         }
 
         @media screen and (max-width: 768px) {
-
+           
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -188,7 +190,6 @@
                 width: 100%;
                 height: 100vh;
                 overflow-y: auto;
-                /* Enable vertical scrolling if needed */
                 background-color: #050635;
                 text-align: center;
                 transform-origin: 0 0;
@@ -198,6 +199,7 @@
             }
 
             .nav-links.show {
+                margin-top: 120px;
                 display: flex;
             }
 
@@ -214,13 +216,13 @@
                 top: 15px;
                 right: 15px;
                 z-index: 101;
-                /* hamburger menu is displayed above navigation links */
+                
             }
-
             .logout {
                 display: flex;
                 justify-content: flex-end;
-                margin-right: 15px;
+                margin:0 auto;
+                
             }
 
             .logout a {
@@ -229,9 +231,8 @@
 
             .category-container {
                 width: 90%;
-                /* Adjust width to fit within smaller screens */
                 margin: 50px auto 0;
-                /* Adjust margin for centering */
+              
             }
         }
     </style>

@@ -4,6 +4,7 @@ include "./shared/navbar.php"
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,7 @@ include "./shared/navbar.php"
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
-           box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.5s ease-in-out;
         }
 
@@ -34,6 +35,7 @@ include "./shared/navbar.php"
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -46,7 +48,8 @@ include "./shared/navbar.php"
             color: #333;
         }
 
-        input, textarea {
+        input,
+        textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 16px;
@@ -55,7 +58,8 @@ include "./shared/navbar.php"
             border-radius: 4px;
         }
 
-        input:focus, textarea:focus {
+        input:focus,
+        textarea:focus {
             outline: none;
             border-color: #4caf50;
         }
@@ -99,6 +103,7 @@ include "./shared/navbar.php"
             from {
                 transform: translateY(-50px);
             }
+
             to {
                 transform: translateY(0);
             }
@@ -108,6 +113,7 @@ include "./shared/navbar.php"
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
             }
@@ -124,8 +130,23 @@ include "./shared/navbar.php"
             color: #a94442;
             border: 1px solid #ebccd1;
         }
+
+        @media screen and (max-width: 768px) {
+            form {
+                width: 80%;
+                margin: 0 auto;
+                margin-top: 100px;
+            }
+
+            .success-message,.error-message {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+        }
     </style>
 </head>
+
 <body>
 
     <form id="contactForm">
@@ -186,4 +207,5 @@ include "./shared/navbar.php"
         }
     </script>
 </body>
+
 </html>
