@@ -97,11 +97,9 @@ session_start();
         .question-image img {
             margin-bottom: 10px;
             height: 70px;
-            width: 75px;
-            /* Set width to 100 pixels */
+            width: 85px;
             display: block;
-            /* Ensure the image is block-level element */
-            /*margin: 0 auto; Center the image horizontally */
+ 
         }
 
         .answer-option {

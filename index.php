@@ -287,19 +287,19 @@
         <div class="slider">
 
             <div class="slide">
-                <img src="./images/quiz1.png" alt="" />
+                <img src="./images/quiz1.png" alt="Carousel Image" />
             </div>
 
             <div class="slide">
-                <img src="./images/quiz2.jpg" alt="" />
+                <img src="./images/quiz2.jpg" alt="Carousel Image" />
             </div>
 
             <div class="slide">
-                <img src="./images/game.avif" alt="" />
+                <img src="./images/game.avif" alt="Carousel Image" />
             </div>
 
             <div class="slide">
-                <img src="./images/bgg.avif" alt="" />
+                <img src="./images/quiz3.jpg" alt="Carousel Image" />
             </div>
 
 

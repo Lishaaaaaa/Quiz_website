@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         // Question inserted successfully
-        header("Location: confirmation.php"); // Redirect to confirmation page
+        header("Location: qstn_added.php"); // Redirect to confirmation page
         exit();
     } else {
         // Error occurred while inserting question
