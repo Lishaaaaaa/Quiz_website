@@ -19,38 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
-<?php
-
-$username = $_POST['username'];
-$password=$_POST['password'];
-$utype=$_POST['user_type'];
-
-$encpass=md5($password);
-
-
-$status=mysqli_query($conn,"insert into Users(FirstName,LastName,password,user_type) values('$firstName','$lastName','$encpass','$utype')");
-if($status)
-{
-    echo "Registration successful";
-   
-}
-else
-{
-    echo "Error in registration";
-    echo mysqli_error($conn);
-}
-
-?>
 
 
 
 
 
 
-//quizid and userid check for validating if the user have played the quiz earlier or not --done
-//user page
-//timer 
-//admin page
-//if the user selects the back button he can see questions and can submit again.but the answer will be displayed which he had given first.
-//should the answers be submitted if the time is up..]
-//navbar category redirection

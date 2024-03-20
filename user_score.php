@@ -36,10 +36,6 @@ tr:nth-child(even) {
     
 }
 
-/* tr:nth-child(odd) {
-    background-color: #e9e9e9;
-    
-} */
 
 table, th, td {
     border: 1px solid black; /* Adding border for the table, th, and td */

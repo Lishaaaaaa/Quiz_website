@@ -28,7 +28,9 @@
     }
 
     .category-box {
-        margin-bottom: 10px; /* Add margin between category boxes */
+        margin-bottom: 10px; 
+        border-radius: 5px;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5); 
     }
 
     .category-link {
@@ -38,7 +40,6 @@
         padding: 10px;
         border-radius: 5px;
         background-color: #f0f0f0;
-        border: 1px solid #ccc;
         transition: background-color 0.3s, color 0.3s;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
     }
@@ -92,11 +93,14 @@
     .container {
         margin: 100px auto 10px;
     padding: 1px;
+
+    
     }
 
     .category-container {
         width: 80%; 
         top: 250px; 
+        
     }
 }
 

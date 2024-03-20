@@ -75,7 +75,7 @@ session_start();
         #timer-number {
             fill: white;
             font-family: Arial, sans-serif;
-            font-size: 40px;
+            font-size: 50px;
             text-anchor: middle;
             dominant-baseline: middle;
         }
@@ -91,7 +91,30 @@ session_start();
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+           
+        }
 
+        .question-container:hover {
+            animation-name: pulse;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .question-image img {
@@ -99,7 +122,7 @@ session_start();
             height: 70px;
             width: 85px;
             display: block;
- 
+
         }
 
         .answer-option {
@@ -120,25 +143,54 @@ session_start();
 
             .content {
                 margin-right: 0;
-                /* Remove the right margin to make the content full-width */
             }
 
             .question-container {
                 margin-right: 0;
-                /* Remove margin on smaller screens */
                 margin-top: 50px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
             }
 
             .question-image img {
                 width: 50%;
-                
-                /* Make the image width 100% of its container */
                 height: auto;
-                /* Ensure the aspect ratio is maintained */
             }
         }
     </style>
     <script>
+        // Function to display time-up message
+        function displayTimeUpMessage() {
+            var timeUpMessage = document.getElementById('timeUpMessage');
+            timeUpMessage.textContent = "Time's up!";
+
+            // Create a div for the link
+            var linkDiv = document.createElement('div');
+
+            // Create the link element
+            var link = document.createElement('a');
+            link.textContent = 'Go back to Categories';
+            link.href = 'category.php'; // Set the href attribute to the desired URL
+            link.style.backgroundColor = '#007bff'; // Set the background color
+            link.style.padding = '5px 10px'; // Add padding for better appearance
+            link.style.color = 'white'; // Set text color to contrast with background
+            link.style.position = 'absolute'; // Set position to absolute
+            link.style.top = '45px'; // Position the link 10px from the bottom of the viewport
+            link.style.left = '50%'; // Position the link horizontally centered
+            link.style.transform = 'translateX(-50%)'; // Center the link horizontally
+
+
+
+
+            // Append the link to the link div
+            linkDiv.appendChild(link);
+
+            // Append the link div to the time up message element
+            timeUpMessage.appendChild(linkDiv);
+
+            timeUpMessage.style.display = 'block';
+        }
+
+
         window.onload = function() {
             // Set the countdown time in minutes
             var countdownMinutes = 2;
@@ -165,13 +217,6 @@ session_start();
 
             // Update the timer every second
             var timerInterval = setInterval(updateTimer, 1000);
-
-            // Function to display time-up message
-            function displayTimeUpMessage() {
-                var timeUpMessage = document.getElementById('timeUpMessage');
-                timeUpMessage.textContent = "Time's up!";
-                timeUpMessage.style.display = 'block';
-            }
         };
     </script>
 </head>

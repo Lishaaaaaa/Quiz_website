@@ -201,7 +201,7 @@
                 top: 15px;
                 right: 15px;
                 z-index: 101;
-                /* hamburger menu is displayed above navigation links */
+                
             }
 
             .logout {
