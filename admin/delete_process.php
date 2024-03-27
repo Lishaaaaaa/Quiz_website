@@ -14,13 +14,7 @@
             align-items: center;
             height: 100vh; 
         }
-        /* .container {
-            width: 50%;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        } */
+        /* Add your CSS styles here */
         .button-container {
             margin-top: 20px;
             text-align: center; /* Center the button horizontally */
@@ -60,6 +54,7 @@
     <div class="container">
         <?php
         include "../shared/config.php";
+
         if (isset($_POST['delete_category'])) {
             // Handle category deletion
             $categoryId = $_POST['category_id'];
@@ -84,6 +79,17 @@
             // Handle quiz deletion
             $quizId = $_POST['quiz_id'];
 
+            // Delete questions associated with the quiz
+            $deleteQuestionsSql = "DELETE FROM Questions WHERE QuizID = ?";
+            $stmt = $conn->prepare($deleteQuestionsSql);
+            $stmt->bind_param("i", $quizId);
+            $stmt->execute();
+
+            $deleteQuestionsSql = "DELETE FROM Responses WHERE QuizID = ?";
+            $stmt = $conn->prepare($deleteQuestionsSql);
+            $stmt->bind_param("i", $quizId);
+            $stmt->execute();
+
             // Delete quiz from database
             $deleteQuizSql = "DELETE FROM Quizzes WHERE QuizID = ?";
             $stmt = $conn->prepare($deleteQuizSql);
@@ -92,9 +98,9 @@
 
             // Check if deletion was successful
             if ($stmt->affected_rows > 0) {
-                echo "<div class='message success'>Quiz deleted successfully.</div>";
+                echo "<div class='message success'>Quiz and associated questions deleted successfully.</div>";
             } else {
-                echo "<div class='message error'>Error deleting quiz: " . $stmt->error . "</div>";
+                echo "<div class='message error'>Error deleting quiz and associated questions: " . $stmt->error . "</div>";
             }
 
             $stmt->close();

@@ -216,7 +216,8 @@
                     </div>
                     <div class="field input-field">
 
-                        <input type="password" name="password" class="password" placeholder="Password" required>
+                        <input type="password" name="password" class="password" placeholder="Password" pattern="^[a-zA-Z]+[0-9a-zA-Z]{3,}$" title="Password must start with letters and contain at least 4 characters with letters and digits" required>
+
                     </div>
                     <div class="field button-field">
                         <input type="submit" value="Register">

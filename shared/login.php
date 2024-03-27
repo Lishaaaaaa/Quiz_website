@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve email, password, and user_type from the POST data
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $user_type = $_POST['user_type']; // Assuming 'user_type' is submitted via the form
+    $user_type = $_POST['user_type']; 
 
     // Prepare a SQL statement to retrieve user data
     $sql = "SELECT * FROM Users WHERE Email = ?";

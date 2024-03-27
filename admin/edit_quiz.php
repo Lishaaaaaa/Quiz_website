@@ -31,6 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("i", $categoryID);
         $stmt->execute();
         $quizzes_result = $stmt->get_result();
+
+        // $quizzes_sql = "SELECT * FROM Quizzes WHERE CategoryID = ?";
+        // $stmt = mysqli_prepare($conn, $quizzes_sql);
+        // mysqli_stmt_bind_param($stmt, "i", $categoryID);
+        // mysqli_stmt_execute($stmt);
+        // $quizzes_result = mysqli_stmt_get_result($stmt);
     }
 }
 
@@ -134,15 +140,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .message-container {
             text-align: center;
         }
+
         @media screen and (max-width: 480px) {
             form {
-            margin-top: 50px;
-        }
-           ul{
-            display: flex;
-            flex-direction: column;
-           gap: 20px;
-           }
+                margin-top: 50px;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
         }
     </style>
 </head>

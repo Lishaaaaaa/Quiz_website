@@ -41,7 +41,6 @@
 
         th {
             background-color: #4CAF50;
-            /* Green */
             color: white;
         }
 
@@ -67,9 +66,8 @@
             table {
                 margin: 0 auto; /* Center the table horizontally */
                 width: 80%;
-                /* Ensure the table takes up 100% width of its container */
                 max-width: none;
-                /* Remove max-width limit to allow table to expand */
+              
             }
         }
     </style>
@@ -85,9 +83,9 @@
         // Retrieve top 3 users for each category
         $top_users_query = "SELECT r.UserID, r.CategoryID, c.CategoryName, MAX(r.Score) AS MaxScore, u.Username
     FROM Responses r 
-    INNER JOIN Quizzes q ON r.QuizID = q.QuizID
-    INNER JOIN Categories c ON r.CategoryID = c.CategoryID
-    INNER JOIN Users u ON r.UserID = u.UserID
+     JOIN Quizzes q ON r.QuizID = q.QuizID
+     JOIN Categories c ON r.CategoryID = c.CategoryID
+     JOIN Users u ON r.UserID = u.UserID
     GROUP BY r.CategoryID, r.UserID 
     ORDER BY r.CategoryID, MaxScore DESC, u.Username ASC;
     ";

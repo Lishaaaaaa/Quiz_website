@@ -45,8 +45,6 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Finish') {
         }
     }
 
-    // Output total score outside the loop
-    // echo  "Total score: $totalScore<br>";
 
     // Insert score into Responses table
     $insert_score_sql = "INSERT INTO Responses (UserID, QuizID, Score,CategoryID) VALUES (?, ?, ?,?)";
